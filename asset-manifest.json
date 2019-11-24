@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/HR_FullStack_frontend/static/js/main.99819580.chunk.js",
+    "main.js.map": "/HR_FullStack_frontend/static/js/main.99819580.chunk.js.map",
+    "runtime-main.js": "/HR_FullStack_frontend/static/js/runtime-main.6c7ce322.js",
+    "runtime-main.js.map": "/HR_FullStack_frontend/static/js/runtime-main.6c7ce322.js.map",
+    "static/css/2.b0bb7f2c.chunk.css": "/HR_FullStack_frontend/static/css/2.b0bb7f2c.chunk.css",
+    "static/js/2.c47c2b8d.chunk.js": "/HR_FullStack_frontend/static/js/2.c47c2b8d.chunk.js",
+    "static/js/2.c47c2b8d.chunk.js.map": "/HR_FullStack_frontend/static/js/2.c47c2b8d.chunk.js.map",
+    "index.html": "/HR_FullStack_frontend/index.html",
+    "precache-manifest.2999a6284df2665f79abbf4a05535778.js": "/HR_FullStack_frontend/precache-manifest.2999a6284df2665f79abbf4a05535778.js",
+    "service-worker.js": "/HR_FullStack_frontend/service-worker.js",
+    "static/css/2.b0bb7f2c.chunk.css.map": "/HR_FullStack_frontend/static/css/2.b0bb7f2c.chunk.css.map",
+    "static/media/logo.svg": "/HR_FullStack_frontend/static/media/logo.25bf045c.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6c7ce322.js",
+    "static/css/2.b0bb7f2c.chunk.css",
+    "static/js/2.c47c2b8d.chunk.js",
+    "static/js/main.99819580.chunk.js"
+  ]
+}
