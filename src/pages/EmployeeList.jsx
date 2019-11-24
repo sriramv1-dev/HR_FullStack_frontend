@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import api from "../api";
-import "react-table/react-table.css";
 import { Pagination } from "../components";
 import { paginate } from "../utils/paginate";
 import EmployeeTable from "../components/EmployeeTable";
