@@ -3,6 +3,8 @@ import FormInputComponent from "./shared/FormInputComponent";
 import { cancelStyle, baseDivStyle } from "../utils/styles";
 import { salaryPattern, namePattern } from "../utils/patterns";
 import FormLabelInputRuleComponent from "./shared/FormLabelInputRuleComponent";
+import { wageOptions } from "../utils/options";
+import FormSelectComponent from "./shared/FormSelectComponent";
 
 class EmployeeInformationComponent extends Component {
   render() {
@@ -13,6 +15,7 @@ class EmployeeInformationComponent extends Component {
       salary,
       takeHome,
       deductions,
+      payFrequency,
       inputChanged,
       handleSubmit
     } = this.props;
@@ -27,7 +30,7 @@ class EmployeeInformationComponent extends Component {
             name="firstName"
             type="text"
             labelName="First Name:"
-            placeholder="Enter First Name"
+            placeholder="Please Enter First Name"
             value={firstName}
             pattern={namePattern}
             onChange={inputChanged}
@@ -42,6 +45,15 @@ class EmployeeInformationComponent extends Component {
             value={lastName}
             onChange={inputChanged}
           />
+          {/*<br />
+          <FormSelectComponent
+            name="payFrequency"
+            labelName="Pay Frequency:"
+            value={payFrequency}
+            onChange={inputChanged}
+            options={wageOptions}
+          />*/}
+
           <br />
           <FormInputComponent
             name="salary"
@@ -132,3 +144,5 @@ class EmployeeInformationComponent extends Component {
 }
 
 export default EmployeeInformationComponent;
+
+// https://hrapp-d9728.firebaseapp.com/

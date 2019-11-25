@@ -2,6 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "http://localhost:3456/api"
+  // baseURL: "https://hrappbackend.firebaseapp.com/api"
 });
 
 export const insertEmployee = payload => api.post(`/employee`, payload);

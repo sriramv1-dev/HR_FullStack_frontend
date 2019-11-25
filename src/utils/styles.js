@@ -11,4 +11,8 @@ const baseDivStyle = {
   marginRight: "100px"
 };
 
-export { baseDivStyle, cancelStyle };
+const labelStyle = {
+  margin: "5px"
+};
+
+export { baseDivStyle, cancelStyle, labelStyle };
