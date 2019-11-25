@@ -30,7 +30,7 @@ class EmployeeInformationComponent extends Component {
             name="firstName"
             type="text"
             labelName="First Name:"
-            placeholder="Please Enter First Name"
+            placeholder="Enter First Name"
             value={firstName}
             pattern={namePattern}
             onChange={inputChanged}
