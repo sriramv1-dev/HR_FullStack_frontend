@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Table from "./shared/table";
+import { formatDateTime } from "../utils/functions";
 
 class EmployeeTable extends Component {
   constructor(props) {
@@ -8,7 +9,35 @@ class EmployeeTable extends Component {
       columns: [
         { label: "First Name", path: "firstName" },
         { label: "Last Name", path: "lastName" },
-        { label: "Salary", path: "salary" },
+        {
+          label: "Salary",
+          path: "salary",
+          content: row => (
+            <label>
+              {"$ " +
+                row.salary
+                  .toString()
+                  .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
+            </label>
+          )
+        },
+        {
+          label: "Take Home",
+          path: "takeHome",
+          content: row => (
+            <label>
+              {"$ " +
+                row.takeHome
+                  .toString()
+                  .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
+            </label>
+          )
+        },
+        {
+          label: "Date Created",
+          path: "createdAt",
+          content: row => <label>{formatDateTime(row.createdAt)}</label>
+        },
         {
           key: "delete",
           label: "",

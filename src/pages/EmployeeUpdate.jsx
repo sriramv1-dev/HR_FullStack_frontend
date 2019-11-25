@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import api from "../api";
 import { EmployeeInformationComponent } from "../components";
+import {
+  calculateFederalTax,
+  calculateSocialSecurityTax,
+  calculateMedicare,
+  calculateFICA,
+  calculateTakeHome
+} from "../utils/functions";
 
 class EmployeeUpdate extends Component {
   constructor(props) {
@@ -11,6 +18,14 @@ class EmployeeUpdate extends Component {
         firstName: "",
         lastName: "",
         salary: "",
+        takeHome: "",
+        deductions: {
+          federalTax: "",
+          socialSecurityTax: "",
+          medicareTax: "",
+          medicareTax: "",
+          ficaTax: ""
+        },
         isDeleted: false
       }
     };
@@ -18,15 +33,22 @@ class EmployeeUpdate extends Component {
 
   componentDidMount = async () => {
     const retVal = await api.getEmployeeById(this.props.match.params.id);
-
     var employee = this.state.employee;
-    employee.firstName = retVal.data.data.firstName;
-    employee.lastName = retVal.data.data.lastName;
-    employee.salary = retVal.data.data.salary;
-    employee.isDeleted =
-      retVal.data.data.isDeleted === undefined
-        ? false
-        : retVal.data.data.isDeleted;
+    const {
+      firstName,
+      lastName,
+      salary,
+      takeHome,
+      deductions,
+      isDeleted
+    } = retVal.data.data;
+
+    employee.firstName = firstName;
+    employee.lastName = lastName;
+    employee.salary = salary;
+    employee.takeHome = takeHome;
+    employee.deductions = deductions;
+    employee.isDeleted = isDeleted === undefined ? false : isDeleted;
     this.setState({ employee });
   };
 
@@ -36,16 +58,50 @@ class EmployeeUpdate extends Component {
       const salary = event.target.validity.valid
         ? event.target.value
         : employee.salary;
+
+      const federalTax = calculateFederalTax(salary);
+      const socialSecurityTax = calculateSocialSecurityTax(salary);
+      const medicareTax = calculateMedicare(salary);
+      const ficaTax = calculateFICA(salary);
+      const takeHome = calculateTakeHome(salary, {
+        federalTax: federalTax,
+        socialSecurityTax: socialSecurityTax,
+        medicareTax: medicareTax,
+        ficaTax: ficaTax
+      });
+
       employee[event.target.name] = salary;
+
+      employee.deductions["federalTax"] = federalTax;
+      employee.deductions["socialSecurityTax"] = socialSecurityTax;
+      employee.deductions["medicareTax"] = medicareTax;
+      employee.deductions["ficaTax"] = ficaTax;
+      employee["takeHome"] = takeHome;
     } else {
       employee[event.target.name] = event.target.value;
     }
+    console.log(employee);
     this.setState({ employee });
   };
 
   handleUpdateEmployee = async () => {
-    const { id, firstName, lastName, salary, isDeleted } = this.state.employee;
-    const payload = { firstName, lastName, salary, isDeleted };
+    const {
+      id,
+      firstName,
+      lastName,
+      salary,
+      takeHome,
+      deductions,
+      isDeleted
+    } = this.state.employee;
+    const payload = {
+      firstName,
+      lastName,
+      salary,
+      takeHome,
+      deductions,
+      isDeleted
+    };
 
     await api.updateEmployeeById(id, payload).then(res => {
       window.alert(`Employee updated successfully`);
@@ -54,6 +110,8 @@ class EmployeeUpdate extends Component {
   };
 
   render() {
+    console.log("Rendering");
+    console.log(this.state.employee);
     return (
       <EmployeeInformationComponent
         isCreate={false}

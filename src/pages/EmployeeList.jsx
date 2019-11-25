@@ -14,7 +14,7 @@ class EmployeeList extends Component {
       columns: [],
       pageSize: 5,
       currentPage: 1,
-      sortBy: { order: "asc", column: "firstName" }
+      sortBy: { order: "desc", column: "createdAt" }
     };
   }
 
@@ -40,7 +40,6 @@ class EmployeeList extends Component {
         `Do tou want to delete the employee ${employee.firstName} permanently?`
       )
     ) {
-      // api.deleteEmployeeById(id);
       var payload = { id: id };
       payload.firstName = employee.firstName;
       payload.lastName = employee.lastName;

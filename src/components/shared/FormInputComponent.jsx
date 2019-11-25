@@ -13,7 +13,7 @@ const FormInputComponent = ({
   onChange,
   pattern
 }) => {
-  if (pattern && type === "number") {
+  if (pattern) {
     return (
       <div className="container">
         <div className="row justify-content-md-center">
@@ -59,6 +59,7 @@ const FormInputComponent = ({
             placeholder={placeholder}
             value={value}
             onChange={onChange}
+            type={type ? type : "text"}
           />
         </div>
       </div>
