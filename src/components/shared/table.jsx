@@ -4,7 +4,10 @@ import TableBody from "./tableBody";
 
 const Table = ({ data, columns, sortBy, onSort }) => {
   return (
-    <table className="table table-bordered table-striped">
+    <table
+      className="table table-bordered table-striped"
+      style={{ textAlign: "center" }}
+    >
       <TableHeader columns={columns} sortBy={sortBy} onSort={onSort} />
       <TableBody data={data} columns={columns} />
     </table>

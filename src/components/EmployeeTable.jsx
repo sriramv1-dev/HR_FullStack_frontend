@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Table from "./shared/table";
 import { formatDateTime } from "../utils/functions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 class EmployeeTable extends Component {
   constructor(props) {
@@ -50,8 +52,7 @@ class EmployeeTable extends Component {
               }}
               className="btn btn-danger btn-sm"
             >
-              <i className="fa fa-trash" aria-hidden="true" />
-              Delete
+              <FontAwesomeIcon icon={faTrash} />
             </button>
           )
         },
@@ -66,11 +67,35 @@ class EmployeeTable extends Component {
               }}
               className="btn btn-primary btn-sm"
             >
-              <i className="fa fa-pencil" aria-hidden="true" />
-              Update
+              <FontAwesomeIcon icon={faEdit} />
             </button>
           )
         }
+        // {
+        //   key: "actions",
+        //   label: "",
+        //   content: employee => (
+        //     <div className="btn-group" style={{ overflow: "visible" }}>
+        //       <button className="btn btn-info">Actions</button>
+        //       <button
+        //         className="btn btn-info dropdown-toggle dropdown-toggle-split"
+        //         data-toggle="dropdown"
+        //         aria-haspopup="true"
+        //         aria-expanded="false"
+        //       >
+        //         <span className="sr-only">Toggle Dropdown</span>
+        //       </button>
+        //       <div className="dropdown-menu">
+        //         <a className="dropdown-item" href="#">
+        //           Update
+        //         </a>
+        //         <a className="dropdown-item" href="#">
+        //           Delete
+        //         </a>
+        //       </div>
+        //     </div>
+        //   )
+        // }
       ]
     };
   }
