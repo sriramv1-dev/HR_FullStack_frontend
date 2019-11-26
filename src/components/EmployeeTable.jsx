@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Table from "./shared/table";
 import { formatDateTime } from "../utils/functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faEdit, faCog } from "@fortawesome/free-solid-svg-icons";
 
 class EmployeeTable extends Component {
   constructor(props) {
@@ -65,37 +65,39 @@ class EmployeeTable extends Component {
                 event.preventDefault();
                 this.props.onUpdate(employee);
               }}
-              className="btn btn-primary btn-sm"
+              className="btn btn-info btn-sm"
             >
               <FontAwesomeIcon icon={faEdit} />
             </button>
           )
+        },
+        {
+          key: "actions",
+          label: "",
+          content: employee => (
+            <div className="btn-group" style={{ overflow: "visible" }}>
+              <button className="btn btn-info">
+                <FontAwesomeIcon icon={faCog} />
+              </button>
+              <button
+                className="btn btn-info dropdown-toggle dropdown-toggle-split"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <span className="sr-only">Toggle Dropdown</span>
+              </button>
+              <div className="dropdown-menu">
+                <a className="dropdown-item" href="#">
+                  Update
+                </a>
+                <a className="dropdown-item" href="#">
+                  Delete
+                </a>
+              </div>
+            </div>
+          )
         }
-        // {
-        //   key: "actions",
-        //   label: "",
-        //   content: employee => (
-        //     <div className="btn-group" style={{ overflow: "visible" }}>
-        //       <button className="btn btn-info">Actions</button>
-        //       <button
-        //         className="btn btn-info dropdown-toggle dropdown-toggle-split"
-        //         data-toggle="dropdown"
-        //         aria-haspopup="true"
-        //         aria-expanded="false"
-        //       >
-        //         <span className="sr-only">Toggle Dropdown</span>
-        //       </button>
-        //       <div className="dropdown-menu">
-        //         <a className="dropdown-item" href="#">
-        //           Update
-        //         </a>
-        //         <a className="dropdown-item" href="#">
-        //           Delete
-        //         </a>
-        //       </div>
-        //     </div>
-        //   )
-        // }
       ]
     };
   }
