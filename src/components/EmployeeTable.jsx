@@ -21,6 +21,7 @@ class EmployeeTable extends Component {
             </label>
           )
         },
+        { label: "Frequency", path: "payFrequency" },
         {
           label: "Take Home",
           path: "takeHome",
