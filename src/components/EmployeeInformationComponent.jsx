@@ -45,14 +45,14 @@ class EmployeeInformationComponent extends Component {
             value={lastName}
             onChange={inputChanged}
           />
-          {/*<br />
+          <br />
           <FormSelectComponent
             name="payFrequency"
             labelName="Pay Frequency:"
             value={payFrequency}
             onChange={inputChanged}
             options={wageOptions}
-          />*/}
+          />
 
           <br />
           <FormInputComponent

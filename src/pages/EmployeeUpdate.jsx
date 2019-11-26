@@ -19,10 +19,10 @@ class EmployeeUpdate extends Component {
         lastName: "",
         salary: "",
         takeHome: "",
+        payFrequency: "Hourly",
         deductions: {
           federalTax: "",
           socialSecurityTax: "",
-          medicareTax: "",
           medicareTax: "",
           ficaTax: ""
         },
@@ -39,6 +39,7 @@ class EmployeeUpdate extends Component {
       lastName,
       salary,
       takeHome,
+      payFrequency,
       deductions,
       isDeleted
     } = retVal.data.data;
@@ -47,6 +48,7 @@ class EmployeeUpdate extends Component {
     employee.lastName = lastName;
     employee.salary = salary;
     employee.takeHome = takeHome;
+    employee.payFrequency = payFrequency;
     employee.deductions = deductions;
     employee.isDeleted = isDeleted === undefined ? false : isDeleted;
     this.setState({ employee });
@@ -91,6 +93,7 @@ class EmployeeUpdate extends Component {
       lastName,
       salary,
       takeHome,
+      payFrequency,
       deductions,
       isDeleted
     } = this.state.employee;
@@ -99,10 +102,12 @@ class EmployeeUpdate extends Component {
       lastName,
       salary,
       takeHome,
+      payFrequency,
       deductions,
       isDeleted
     };
-
+    console.log("payload");
+    console.log(payload);
     await api.updateEmployeeById(id, payload).then(res => {
       window.alert(`Employee updated successfully`);
     });

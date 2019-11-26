@@ -22,17 +22,17 @@ class EmployeeCreate extends Component {
           federalTax: "",
           socialSecurityTax: "",
           medicareTax: "",
-          medicareTax: "",
           ficaTax: ""
         },
+        payFrequency: "Hourly",
         isDeleted: false
-        // payFrequency: ""
       }
     };
   }
 
   inputChanged = event => {
     var employee = this.state.employee;
+
     console.log(event.target);
     if (event.target.name === "salary") {
       const salary = event.target.validity.valid
