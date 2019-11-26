@@ -44,8 +44,12 @@ class EmployeeList extends Component {
       payload.firstName = employee.firstName;
       payload.lastName = employee.lastName;
       payload.salary = employee.salary;
+      payload.takeHome = employee.takeHome;
+      payload.deductions = employee.deductions;
       payload.isDeleted = true;
+
       api.softDeleteEmployeeById(id, payload);
+
       window.location.reload();
     }
   };

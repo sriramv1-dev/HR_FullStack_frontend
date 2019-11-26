@@ -110,8 +110,6 @@ class EmployeeUpdate extends Component {
   };
 
   render() {
-    console.log("Rendering");
-    console.log(this.state.employee);
     return (
       <EmployeeInformationComponent
         isCreate={false}

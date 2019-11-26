@@ -111,7 +111,7 @@ class EmployeeInformationComponent extends Component {
             type="number"
             labelName="FICA:"
             placeholder=""
-            value={deductions.medicareTax}
+            value={deductions.ficaTax}
             onChange={inputChanged}
             rule="The Federal Insurance Contributions Act: Social Security + Medicare"
             readOnly={true}
