@@ -8,7 +8,7 @@ const FormInputComponent = ({
   placeholder,
   value,
   onChange,
-  pattern
+  pattern,
 }) => {
   if (pattern) {
     return (
@@ -50,7 +50,6 @@ const FormInputComponent = ({
         <div className="col ">
           <input
             className="form-control"
-            type={type}
             name={name}
             key={name}
             placeholder={placeholder}

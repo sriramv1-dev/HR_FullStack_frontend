@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import api from "../api";
+import dummyApi from "../api/DummyData/dummyApi";
 import { Pagination } from "../components";
 import { paginate } from "../utils/paginate";
 import EmployeeTable from "../components/EmployeeTable";
@@ -14,26 +15,32 @@ class EmployeeList extends Component {
       columns: [],
       pageSize: 5,
       currentPage: 1,
-      sortBy: { order: "desc", column: "createdAt" }
+      sortBy: { order: "desc", column: "createdAt" },
     };
   }
 
-  componentDidMount = async () => {
-    this.setState({ isLoading: true });
-    await api.getAllEmployees().then(employees => {
-      this.setState({
-        employees: employees.data.data,
-        isLoading: false
-      });
-    });
-  };
+  // componentDidMount = async () => {
+  //   this.setState({ isLoading: true });
+  //   await api.getAllEmployees().then(employees => {
+  //     this.setState({
+  //       employees: employees.data.data,
+  //       isLoading: false
+  //     });
+  //   });
+  // };
 
-  handleUpdateEmployee = employee => {
+  componentDidMount() {
+    this.setState({ isLoading: true });
+    const employees = dummyApi.getAllEmployees();
+    this.setState({ employees, isLoading: false });
+  }
+
+  handleUpdateEmployee = (employee) => {
     var id = employee._id;
     window.location.href = `/employees/update/${id}`;
   };
 
-  handleDeleteEmployee = async employee => {
+  handleDeleteEmployee = (employee) => {
     var id = employee._id;
     if (
       window.confirm(
@@ -47,24 +54,46 @@ class EmployeeList extends Component {
       payload.takeHome = employee.takeHome;
       payload.deductions = employee.deductions;
       payload.isDeleted = true;
-
-      api.softDeleteEmployeeById(id, payload);
-
-      window.location.reload();
+      const success = dummyApi.softDeleteEmployeeById(id, payload);
+      if (success) {
+        const employees = dummyApi.getAllEmployees();
+        this.setState({ employees });
+      }
     }
   };
 
-  handlePageChange = page => {
+  // handleDeleteEmployee = async (employee) => {
+  //   var id = employee._id;
+  //   if (
+  //     window.confirm(
+  //       `Do tou want to delete the employee ${employee.firstName} permanently?`
+  //     )
+  //   ) {
+  //     var payload = { id: id };
+  //     payload.firstName = employee.firstName;
+  //     payload.lastName = employee.lastName;
+  //     payload.salary = employee.salary;
+  //     payload.takeHome = employee.takeHome;
+  //     payload.deductions = employee.deductions;
+  //     payload.isDeleted = true;
+
+  //     api.softDeleteEmployeeById(id, payload);
+
+  //     window.location.reload();
+  //   }
+  // };
+
+  handlePageChange = (page) => {
     this.setState({ currentPage: page });
   };
 
-  handleSort = sortBy => {
+  handleSort = (sortBy) => {
     this.setState({ sortBy });
   };
 
   render() {
     const { employees } = this.state;
-
+    console.log(this.state.employees);
     let showTable = true;
     if (!employees.length) {
       showTable = false;

@@ -58,3 +58,11 @@ export function formatDateTime(idate) {
     strTime
   );
 }
+
+export function addDays(theDate, days) {
+  if (days) {
+    return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);
+  } else {
+    return new Date();
+  }
+}
